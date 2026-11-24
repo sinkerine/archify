@@ -4,10 +4,12 @@ When the Pi `artifact_publish` tool is available in the session, publish every A
 
 ## Workspace location
 
-- Put each new Archify artifact in its own subdirectory under the `pi-artifacts` session work directory shown in the extension guidance:
-  `<workDir>/<session-id>/archify-<type>-<slug>/`
+- Put each new Archify artifact in its own subdirectory under `~/.cache/archify/<project-name>/`:
+  `~/.cache/archify/<project-name>/<type>-<slug>-<YYYYMMDD-HHMMSS>/`
+  where `<project-name>` is the current repository/project directory name (e.g. `basename` of the repo root or working directory).
+- For Code Analysis, pass `--out ~/.cache/archify/<project-name>/code-analysis-<YYYYMMDD-HHMMSS>`.
 - Keep `candidate.json` (or `candidate.archify.md`), receipts, and `<slug>.html` in that folder unless the user explicitly asks to write files into the repository.
-- Run `node <skill-dir>/bin/archify.mjs finalize ...` as usual, passing the HTML output path inside that subdirectory.
+- Run `node <skill-dir>/bin/archify.mjs finalize ...` as usual, passing the absolute HTML output path inside that subdirectory.
 
 ## Publishing
 
